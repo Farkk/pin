@@ -54,14 +54,18 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 10px 14px;
-  margin: 0 -14px;
+  padding: 16px 18px;
   list-style: none;
-  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: #ffffff;
+  color: var(--color-text);
   cursor: pointer;
   transition:
     background-color 0.2s ease,
-    color 0.2s ease;
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
   user-select: none;
 }
 
@@ -92,13 +96,17 @@
 
 .prices-group > summary:hover,
 .prices-group > summary:focus-visible {
+  border-color: rgba(0, 0, 0, 0.14);
   background: var(--color-card-alt);
   color: var(--color-accent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   outline: none;
 }
 
 .prices-group[open] > summary {
   margin-bottom: 14px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .prices-group__title {
