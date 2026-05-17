@@ -89,6 +89,8 @@ $meta_items = array(
   ),
 );
 
+$fancybox_group   = theme_get_fancybox_group( $post_id );
+$fancybox_caption = get_the_title( $post_id );
 $scope_items = theme_parse_multiline_choices(
   (string) $content['scope_list'],
   array(
@@ -123,7 +125,7 @@ $detail_kicker = ! empty( $content['kicker'] ) && 'Портфолио' !== $cont
         <div class="portfolio-detail__visual">
           <?php $main_visual_url = $visuals[0] ?? ''; ?>
           <?php if ( $main_visual_url ) : ?>
-            <a class="portfolio-detail__photo portfolio-detail__photo--main" href="<?php echo esc_url( $main_visual_url ); ?>"<?php echo theme_get_background_style( $main_visual_url ); ?> target="_blank" rel="noopener">
+            <a class="portfolio-detail__photo portfolio-detail__photo--main" href="<?php echo esc_url( $main_visual_url ); ?>"<?php echo theme_get_fancybox_attrs( array( 'group' => $fancybox_group, 'caption' => $fancybox_caption ) ); ?><?php echo theme_get_background_style( $main_visual_url ); ?> aria-label="<?php echo esc_attr( 'Открыть фото: ' . $fancybox_caption ); ?>">
               <span class="screen-reader-text"><?php echo esc_html( get_the_title() ); ?></span>
             </a>
           <?php else : ?>
@@ -132,11 +134,18 @@ $detail_kicker = ! empty( $content['kicker'] ) && 'Портфолио' !== $cont
 
           <div class="portfolio-detail__side">
             <?php for ( $index = 1; $index <= 2; $index++ ) : ?>
-              <?php $image_url = $visuals[ $index ] ?? ( $visuals[0] ?? '' ); ?>
-              <?php if ( $image_url ) : ?>
-                <a class="portfolio-detail__photo" href="<?php echo esc_url( $image_url ); ?>"<?php echo theme_get_background_style( $image_url ); ?> target="_blank" rel="noopener">
-                  <span class="screen-reader-text"><?php echo esc_html( get_the_title() ); ?></span>
-                </a>
+              <?php
+              $side_image_url   = $visuals[ $index ] ?? '';
+              $side_display_url = $side_image_url ?: ( $visuals[0] ?? '' );
+              ?>
+              <?php if ( $side_display_url ) : ?>
+                <?php if ( $side_image_url ) : ?>
+                  <a class="portfolio-detail__photo" href="<?php echo esc_url( $side_image_url ); ?>"<?php echo theme_get_fancybox_attrs( array( 'group' => $fancybox_group, 'caption' => $fancybox_caption ) ); ?><?php echo theme_get_background_style( $side_display_url ); ?> aria-label="<?php echo esc_attr( 'Открыть фото: ' . $fancybox_caption ); ?>">
+                    <span class="screen-reader-text"><?php echo esc_html( get_the_title() ); ?></span>
+                  </a>
+                <?php else : ?>
+                  <div class="portfolio-detail__photo"<?php echo theme_get_background_style( $side_display_url ); ?> aria-hidden="true"></div>
+                <?php endif; ?>
               <?php else : ?>
                 <div class="portfolio-detail__photo image-placeholder" data-placeholder-size="720×330"></div>
               <?php endif; ?>
@@ -168,7 +177,7 @@ $detail_kicker = ! empty( $content['kicker'] ) && 'Портфолио' !== $cont
       <div class="section-shell">
         <div class="portfolio-gallery">
           <?php foreach ( array_slice( $visuals, 3 ) as $image_url ) : ?>
-            <a class="portfolio-gallery__item" href="<?php echo esc_url( $image_url ); ?>"<?php echo theme_get_background_style( $image_url ); ?> target="_blank" rel="noopener">
+            <a class="portfolio-gallery__item" href="<?php echo esc_url( $image_url ); ?>"<?php echo theme_get_fancybox_attrs( array( 'group' => $fancybox_group, 'caption' => $fancybox_caption ) ); ?><?php echo theme_get_background_style( $image_url ); ?> aria-label="<?php echo esc_attr( 'Открыть фото: ' . $fancybox_caption ); ?>">
               <span class="screen-reader-text"><?php echo esc_html( get_the_title() ); ?></span>
             </a>
           <?php endforeach; ?>

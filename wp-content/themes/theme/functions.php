@@ -13,6 +13,8 @@ require_once get_theme_file_path( 'inc/theme-settings.php' );
 require_once get_theme_file_path( 'inc/service-resources.php' );
 require_once get_theme_file_path( 'inc/request-modal.php' );
 require_once get_theme_file_path( 'inc/social-float.php' );
+require_once get_theme_file_path( 'inc/breadcrumbs.php' );
+require_once get_theme_file_path( 'inc/image-lightbox.php' );
 
 if ( is_array( $theme_acf_files ) ) {
   foreach ( $theme_acf_files as $theme_acf_file ) {
@@ -81,27 +83,6 @@ add_action(
       true
     );
 
-    if ( is_page_template( 'templates/company-letters.php' ) ) {
-      wp_enqueue_style(
-        'theme-fancybox',
-        'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css',
-        array(),
-        '5.0.36'
-      );
-
-      wp_enqueue_script(
-        'theme-fancybox',
-        'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js',
-        array(),
-        '5.0.36',
-        true
-      );
-
-      wp_add_inline_script(
-        'theme-fancybox',
-        'Fancybox.bind("[data-fancybox=\"company-letters\"]", { Images: { zoom: true }, Thumbs: false, Toolbar: { display: { left: [], middle: [], right: ["close"] } } });'
-      );
-    }
   }
 );
 

@@ -55,8 +55,7 @@ if ( empty( $letter_cards ) ) {
             <a
               class="company-letters-card <?php echo esc_attr( $letter_card['class'] ); ?>"
               href="<?php echo esc_url( $letter_card['image'] ); ?>"
-              data-fancybox="company-letters"
-              data-caption="<?php echo esc_attr( $letter_card['title'] ); ?>"
+              <?php echo theme_get_fancybox_attrs( array( 'caption' => $letter_card['title'] ) ); ?>
               aria-label="<?php echo esc_attr( 'Открыть: ' . $letter_card['title'] ); ?>"
               <?php echo theme_get_background_style( $letter_card['image'] ); ?>
             ></a>

@@ -14,7 +14,7 @@ $services = theme_get_acf_group(
   )
 );
 
-$service_cards = theme_get_service_cards( 6 );
+$service_cards = theme_get_service_cards();
 ?>
 
 <section class="services-section" id="services">
