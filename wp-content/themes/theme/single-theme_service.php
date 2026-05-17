@@ -25,11 +25,15 @@ $hero = theme_get_acf_group(
     'bullet_3'              => 'Изготовим и смонтируем',
     'image'                 => '',
     'image_url'             => '',
+    'second_image'          => '',
+    'third_image'           => '',
   ),
   $post_id
 );
 
-$hero_image_url = theme_get_group_image_url( $hero );
+$hero_image_url        = theme_get_group_image_url( $hero );
+$hero_second_image_url = theme_get_group_image_url( $hero, 'second_image' );
+$hero_third_image_url  = theme_get_group_image_url( $hero, 'third_image' );
 
 $highlights = theme_get_acf_group(
   'service_highlights',
@@ -98,8 +102,8 @@ $steps = theme_parse_multiline_choices( $process['list'] );
         <div class="service-outdoor-visuals">
           <div class="service-outdoor-visual service-outdoor-visual--main<?php echo esc_attr( theme_get_image_placeholder_class( $hero_image_url ) ); ?>"<?php echo theme_get_background_style( $hero_image_url ); ?><?php echo theme_get_image_placeholder_attrs( $hero_image_url, '720×980' ); ?>></div>
           <div class="service-outdoor-visual-row">
-            <div class="service-outdoor-visual service-outdoor-visual--second<?php echo esc_attr( theme_get_image_placeholder_class( $hero_image_url ) ); ?>"<?php echo theme_get_background_style( $hero_image_url ); ?><?php echo theme_get_image_placeholder_attrs( $hero_image_url, '720×260' ); ?>></div>
-            <div class="service-outdoor-visual service-outdoor-visual--third<?php echo esc_attr( theme_get_image_placeholder_class( $hero_image_url ) ); ?>"<?php echo theme_get_background_style( $hero_image_url ); ?><?php echo theme_get_image_placeholder_attrs( $hero_image_url, '720×260' ); ?>></div>
+            <div class="service-outdoor-visual service-outdoor-visual--second<?php echo esc_attr( theme_get_image_placeholder_class( $hero_second_image_url ) ); ?>"<?php echo theme_get_background_style( $hero_second_image_url ); ?><?php echo theme_get_image_placeholder_attrs( $hero_second_image_url, '720×260' ); ?>></div>
+            <div class="service-outdoor-visual service-outdoor-visual--third<?php echo esc_attr( theme_get_image_placeholder_class( $hero_third_image_url ) ); ?>"<?php echo theme_get_background_style( $hero_third_image_url ); ?><?php echo theme_get_image_placeholder_attrs( $hero_third_image_url, '720×260' ); ?>></div>
           </div>
         </div>
       </div>

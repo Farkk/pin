@@ -94,8 +94,21 @@
     }, 20);
   };
 
+  const resetModalDetails = function () {
+    if (!modalForm) {
+      return;
+    }
+
+    const details = modalForm.querySelector('.request-modal__details');
+
+    if (details) {
+      details.open = false;
+    }
+  };
+
   const closeModal = function () {
     setOpenState(false);
+    resetModalDetails();
 
     if (modalStatus) {
       modalStatus.textContent = initialModalStatus;
@@ -213,6 +226,10 @@
           }
 
           form.reset();
+
+          if (form.matches('[data-request-modal-form]')) {
+            resetModalDetails();
+          }
         })
         .catch(function (error) {
           if (status) {

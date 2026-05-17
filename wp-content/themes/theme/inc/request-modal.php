@@ -121,22 +121,29 @@ if ( ! function_exists( 'theme_render_request_modal' ) ) {
 
           <?php theme_render_request_form_meta( 'Модальная форма' ); ?>
 
-          <label class="form-field form-field--compact">
-            <span class="form-field__label"><?php echo esc_html( $request['name_label'] ); ?></span>
-            <input class="form-field__input" type="text" name="name" autocomplete="name" placeholder="<?php echo esc_attr( $request['name_placeholder'] ); ?>">
-          </label>
+          <div class="request-modal__fields-row">
+            <label class="form-field form-field--compact">
+              <span class="form-field__label"><?php echo esc_html( $request['name_label'] ); ?></span>
+              <input class="form-field__input" type="text" name="name" autocomplete="name" placeholder="<?php echo esc_attr( $request['name_placeholder'] ); ?>">
+            </label>
 
-          <label class="form-field form-field--compact">
-            <span class="form-field__label"><?php echo esc_html( $request['phone_label'] ); ?></span>
-            <input class="form-field__input" type="tel" name="phone" autocomplete="tel" required placeholder="<?php echo esc_attr( $request['phone_placeholder'] ); ?>">
-          </label>
+            <label class="form-field form-field--compact">
+              <span class="form-field__label"><?php echo esc_html( $request['phone_label'] ); ?></span>
+              <input class="form-field__input" type="tel" name="phone" autocomplete="tel" required placeholder="<?php echo esc_attr( $request['phone_placeholder'] ); ?>">
+            </label>
+          </div>
 
-          <label class="form-field form-field--compact">
-            <span class="form-field__label"><?php esc_html_e( 'Комментарий', 'theme' ); ?></span>
-            <textarea class="form-field__input form-field__input--textarea" name="comment" rows="4" placeholder="<?php esc_attr_e( 'Опишите задачу, размеры, тираж, монтаж или сроки', 'theme' ); ?>"></textarea>
-          </label>
+          <details class="request-modal__details">
+            <summary class="request-modal__details-summary"><?php esc_html_e( 'Добавить комментарий и файл', 'theme' ); ?></summary>
+            <div class="request-modal__details-body">
+              <label class="form-field form-field--compact">
+                <span class="form-field__label"><?php esc_html_e( 'Комментарий', 'theme' ); ?></span>
+                <textarea class="form-field__input form-field__input--textarea" name="comment" rows="2" placeholder="<?php esc_attr_e( 'Опишите задачу, размеры, тираж, монтаж или сроки', 'theme' ); ?>"></textarea>
+              </label>
 
-          <?php theme_render_request_file_field( $request['asset_label'], $request['asset_placeholder'] ); ?>
+              <?php theme_render_request_file_field( $request['asset_label'], $request['asset_placeholder'] ); ?>
+            </div>
+          </details>
 
           <?php theme_render_request_form_consent(); ?>
 

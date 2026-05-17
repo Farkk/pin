@@ -437,6 +437,8 @@ if ( ! function_exists( 'theme_seed_content_posts' ) ) {
           'bullet_3'              => 'Изготовим и смонтируем',
           'image'                 => $service['image'],
           'image_url'             => $service['image'],
+          'second_image'          => theme_default_image_url( 'service_outdoor_second' ),
+          'third_image'           => theme_default_image_url( 'service_outdoor_third' ),
         )
       );
       theme_update_group_field(

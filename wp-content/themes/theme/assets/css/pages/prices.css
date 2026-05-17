@@ -62,7 +62,6 @@
   color: var(--color-text);
   cursor: pointer;
   transition:
-    background-color 0.2s ease,
     border-color 0.2s ease,
     color 0.2s ease,
     box-shadow 0.2s ease;
@@ -96,8 +95,7 @@
 
 .prices-group > summary:hover,
 .prices-group > summary:focus-visible {
-  border-color: rgba(0, 0, 0, 0.14);
-  background: var(--color-card-alt);
+  border-color: rgba(0, 0, 0, 0.16);
   color: var(--color-accent);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   outline: none;
