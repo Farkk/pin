@@ -1,0 +1,128 @@
+.site-footer {
+  background: #d9d9d6ff;
+}
+
+.site-footer .section-shell {
+  padding: 0;
+}
+
+.site-footer__panel {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) auto minmax(0, 220px);
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  border-bottom: 0;
+  border-radius: 24px 24px 0 0;
+  background: var(--color-bg-muted);
+}
+
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.site-footer__meta {
+  max-width: 320px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+.site-footer__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.site-footer__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.site-footer__legal {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-border);
+}
+
+.site-footer__legal-link {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-text-muted);
+}
+
+.site-footer__legal-link:hover,
+.site-footer__legal-link:focus-visible {
+  color: var(--color-text);
+}
+
+.site-footer__label,
+.site-footer__copy {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.site-footer__label {
+  color: var(--color-text-muted);
+}
+
+.site-footer__phone {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.site-footer__copy {
+  color: var(--color-accent-dark);
+}
+
+@media (max-width: 1023px) {
+  .site-footer__panel {
+    grid-template-columns: 1fr;
+    justify-items: flex-start;
+  }
+
+  .site-footer__links,
+  .site-footer__contact,
+  .site-footer__legal {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-footer__panel {
+    gap: 20px;
+    padding: 24px 20px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .site-footer__links {
+    width: 100%;
+  }
+
+  .site-footer__links > .chip {
+    flex: 1 1 calc(33.333% - 7px);
+  }
+
+  .site-footer__phone {
+    font-size: 18px;
+  }
+
+  .site-footer__legal {
+    flex-direction: column;
+  }
+}

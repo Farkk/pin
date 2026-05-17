@@ -1,0 +1,54 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Env
+.env
+.env.*
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build
+dist/
+build/
+
+# Cache
+cache/
+tmp/
+
+# WordPress core
+wp-admin/
+wp-includes/
+
+# Uploads
+wp-content/uploads/
+
+# Cache plugins
+wp-content/cache/
+wp-content/advanced-cache.php
+
+# Backup plugins
+wp-content/backup*
+wp-content/updraft/
+
+# Debug
+debug.log
+
+# Composer
+composer.lock
+
+# NPM
+package-lock.json
+yarn.lock
+
+# Bitrix / misc
+bitrix/cache/

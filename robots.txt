@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://pin.asmart-viewdemo.ru/?sitemapindex.xml
+Sitemap: http://pin.asmart-viewdemo.ru/?sitemap251.xml
+Sitemap: http://pin.asmart-viewdemo.ru/?sitemap496.xml
+Sitemap: http://pin.asmart-viewdemo.ru/?sitemap875.xml
+Sitemap: http://pin.asmart-viewdemo.ru/?sitemap21.xml
+Sitemap: http://pin.asmart-viewdemo.ru/?sitemap248.xml

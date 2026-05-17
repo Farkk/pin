@@ -1,0 +1,212 @@
+.services-archive-page {
+  background: var(--color-bg);
+}
+
+.services-archive-intro-section,
+.services-archive-grid-section {
+  background: var(--color-bg);
+}
+
+.services-archive-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 760px;
+  padding: 36px 0 0;
+}
+
+.services-archive-intro__title {
+  max-width: 760px;
+  font-family: var(--font-heading);
+  font-size: clamp(42px, 4vw, 58px);
+  font-weight: 800;
+  line-height: 0.94;
+}
+
+.services-archive-intro__lead {
+  max-width: 640px;
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+.services-archive-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 24px 0 40px;
+}
+
+.services-archive-grid__column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.services-archive-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+}
+
+.services-archive-card[style*='--services-archive-image'] {
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.68)
+    ),
+    var(--services-archive-image);
+  background-position: center;
+  background-size: cover;
+}
+
+.services-archive-card--dark[style*='--services-archive-image'] {
+  background-image:
+    linear-gradient(135deg, rgba(22, 22, 19, 0.88), rgba(22, 22, 19, 0.64)),
+    var(--services-archive-image);
+}
+
+.services-archive-card--light {
+  background: #ffffff;
+}
+
+.services-archive-card--soft {
+  background: var(--color-bg);
+}
+
+.services-archive-card--muted {
+  background: var(--color-card-alt);
+}
+
+.services-archive-card--dark {
+  background: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.services-archive-card--large {
+  min-height: 290px;
+}
+
+.services-archive-card--medium {
+  min-height: 240px;
+}
+
+.services-archive-card--small {
+  min-height: 220px;
+}
+
+.services-archive-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.services-archive-card__index {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+}
+
+.services-archive-card--dark .services-archive-card__index {
+  color: var(--color-accent);
+}
+
+.services-archive-card__title {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--color-text);
+}
+
+.services-archive-card--large .services-archive-card__title {
+  font-size: 28px;
+}
+
+.services-archive-card--dark .services-archive-card__title {
+  color: #ffffff;
+}
+
+.services-archive-card--dark.image-placeholder .services-archive-card__title {
+  color: var(--color-text);
+}
+
+.services-archive-card__text {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+.services-archive-card--dark .services-archive-card__text {
+  color: #eeeeea;
+}
+
+.services-archive-card--dark.image-placeholder .services-archive-card__text {
+  color: var(--color-text-muted);
+}
+
+.services-archive-card__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 38px;
+  padding: 11px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.services-archive-card__button--accent {
+  color: #ffffff;
+  background: var(--color-accent);
+}
+
+.services-archive-card__button--dark {
+  color: #ffffff;
+  background: var(--color-text);
+}
+
+.services-archive-card__button--light {
+  color: var(--color-text);
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+}
+
+@media (max-width: 1199px) {
+  .services-archive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .services-archive-intro {
+    padding: 32px 0 0;
+  }
+
+  .services-archive-grid {
+    padding: 24px 0 40px;
+  }
+
+  .services-archive-card__title,
+  .services-archive-card--large .services-archive-card__title {
+    font-size: 24px;
+  }
+
+  .services-archive-card {
+    min-height: auto;
+    padding: 24px 20px;
+  }
+
+  .services-archive-card__button {
+    width: 100%;
+  }
+}

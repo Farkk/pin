@@ -1,0 +1,254 @@
+.about-us-page {
+  background: var(--color-bg);
+}
+
+.about-us-hero-section,
+.about-us-overview-section {
+  padding-bottom: 36px;
+  background: var(--color-bg);
+}
+
+.about-us-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.about-us-hero-card,
+.about-us-photo-mosaic {
+  min-height: 620px;
+}
+
+.about-us-hero-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(160deg, #f2f2ed 0%, #d9d9d1 100%);
+}
+
+.about-us-hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-us-hero-title {
+  max-width: 620px;
+  font-family: var(--font-heading);
+  font-size: clamp(38px, 4vw, 54px);
+  font-weight: 800;
+  line-height: 0.94;
+}
+
+.about-us-hero-text {
+  max-width: 560px;
+}
+
+.about-us-hero-points {
+  display: grid;
+  grid-template-columns: 201px repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.about-us-hero-point {
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.about-us-photo-mosaic,
+.about-us-photo-stack {
+  display: grid;
+  gap: 16px;
+  height: 100%;
+}
+
+.about-us-photo-mosaic {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.about-us-photo-stack {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.about-us-photo,
+.about-us-story__photo {
+  border-radius: var(--radius-lg);
+  background-position: center;
+  background-size: cover;
+}
+
+.about-us-story__photo {
+  min-height: 360px;
+}
+
+.about-us-photo img,
+.about-us-story__photo img {
+  border-radius: var(--radius-lg);
+}
+
+.about-us-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 0 36px;
+}
+
+.about-us-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.about-us-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 140px;
+  padding: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  background: #ffffff;
+}
+
+.about-us-stat--dark {
+  background: var(--color-text);
+  color: #ffffff;
+  border-color: var(--color-text);
+}
+
+.about-us-stat--dark .about-us-stat__text {
+  color: #eeeeea;
+}
+
+.about-us-stat--muted {
+  background: var(--color-card-alt);
+}
+
+.about-us-stat__value {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.about-us-stat__text {
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+.about-us-story {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  min-height: 360px;
+  align-items: flex-start;
+}
+
+.about-us-story__text {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 26px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  background: #ffffff;
+}
+
+.about-us-story__title {
+  font-family: var(--font-heading);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.about-us-story__paragraph {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.request-section--about-us {
+  padding-bottom: 0;
+}
+
+.request-info--about-us {
+  box-shadow: none;
+}
+
+.request-form--about-us {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 1199px) {
+  .about-us-hero-grid,
+  .about-us-story {
+    grid-template-columns: 1fr;
+  }
+
+  .about-us-hero-card,
+  .about-us-photo-mosaic {
+    min-height: auto;
+  }
+
+  .about-us-photo-mosaic {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .about-us-stats,
+  .about-us-hero-points {
+    grid-template-columns: 1fr;
+  }
+
+  .about-us-overview {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-us-hero-card {
+    padding: 24px 20px;
+  }
+
+  .about-us-hero-title {
+    font-size: 34px;
+  }
+
+  .about-us-overview {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .about-us-photo-mosaic,
+  .about-us-photo-stack {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .about-us-photo {
+    min-height: 220px;
+  }
+
+  .about-us-story__text {
+    padding: 24px 20px;
+  }
+
+  .about-us-story__photo {
+    min-height: 260px;
+  }
+
+  .about-us-story__title {
+    font-size: 30px;
+  }
+}

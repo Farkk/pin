@@ -1,0 +1,148 @@
+.services-section {
+  background: var(--color-bg);
+}
+
+.services-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px 0;
+  background: var(--color-bg);
+}
+
+.services-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 1000px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.service-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  min-height: 220px;
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  background-color: #7f7a70;
+  background-position: center;
+  background-size: cover;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(17, 17, 15, 0.08) 0%,
+    rgba(17, 17, 15, 0.5) 100%
+  );
+}
+
+.service-card__overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(100%, 380px);
+  padding: 18px;
+  border-radius: 18px;
+  background: var(--color-overlay);
+}
+
+.service-card__title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.05;
+  color: #ffffff;
+}
+
+.service-card__text {
+  font-size: 14px;
+  line-height: 1.45;
+  color: #f2f2ee;
+}
+
+.service-card__button {
+  width: fit-content;
+  min-height: 36px;
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+.service-card__button--accent {
+  color: #ffffff;
+  background: var(--color-accent);
+}
+
+.service-card__button--light {
+  color: #161613;
+  background: #ffffff;
+}
+
+.service-card--large {
+  min-height: 280px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.service-card--small {
+  min-height: 196px;
+}
+
+.service-card--medium {
+  min-height: 236px;
+}
+
+.service-card--medium-alt {
+  min-height: 210px;
+}
+
+.service-card--large-alt {
+  min-height: 300px;
+}
+
+.service-card--small-alt {
+  min-height: 202px;
+}
+
+.service-card[style*="--service-card-image"] {
+  background-image:
+    linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.24) 100%),
+    var(--service-card-image);
+}
+
+@media (max-width: 1023px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .services-panel {
+    padding: 32px 0;
+  }
+
+  .service-card {
+    min-height: 240px;
+    padding: 14px;
+  }
+
+  .service-card__overlay {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .service-card__button {
+    width: 100%;
+  }
+}

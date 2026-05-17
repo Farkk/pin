@@ -1,0 +1,137 @@
+.is-request-modal-open {
+  overflow: hidden;
+}
+
+.request-modal[hidden] {
+  display: none;
+}
+
+.request-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.request-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 20, 18, 0.68);
+  backdrop-filter: blur(8px);
+}
+
+.request-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 520px);
+  max-height: min(720px, calc(100vh - 48px));
+  overflow: auto;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius-xl);
+  background: #ffffff;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+}
+
+.request-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.request-modal__close span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-text);
+}
+
+.request-modal__close span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.request-modal__close span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.request-modal__form {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+}
+
+.request-modal__head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 44px;
+}
+
+.request-modal__title {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.request-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px;
+  background: #ffffff;
+}
+
+.form-field__input--textarea {
+  min-height: 116px;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.request-modal__submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.request-modal__status {
+  min-height: 38px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+.request-modal__status.is-success {
+  color: #1d6c3f;
+}
+
+.request-modal__status.is-error {
+  color: #9d2f2f;
+}
+
+@media (max-width: 860px) {
+  .request-modal {
+    padding: 14px;
+    align-items: end;
+  }
+
+  .request-modal__dialog {
+    max-height: calc(100vh - 28px);
+  }
+
+  .request-modal__form {
+    padding: 22px 18px;
+  }
+}

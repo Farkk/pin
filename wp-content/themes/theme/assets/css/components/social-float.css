@@ -1,0 +1,114 @@
+.social-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.social-float__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 18px;
+  border: 1px solid rgba(21, 21, 18, 0.12);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-text);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.social-float__button-icon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.social-float__button-icon::before,
+.social-float__button-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease;
+}
+
+.social-float__button-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.social-float.is-open .social-float__button-icon::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.social-float.is-open .social-float__button-icon::after {
+  transform: translate(-50%, -50%) rotate(135deg);
+}
+
+.social-float__panel {
+  display: flex;
+  width: 210px;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+}
+
+.social-float__panel[hidden] {
+  display: none;
+}
+
+.social-float__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 42px;
+  padding: 0 12px;
+  border-radius: 12px;
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.social-float__link::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.social-float__link:hover,
+.social-float__link:focus-visible {
+  background: var(--color-bg-soft);
+}
+
+@media (max-width: 767px) {
+  .social-float {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .social-float__button {
+    min-height: 48px;
+    padding: 0 16px;
+  }
+}
