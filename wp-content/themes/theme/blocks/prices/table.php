@@ -165,6 +165,46 @@ if ( ! function_exists( 'theme_parse_price_rows' ) ) {
   }
 }
 
+if ( ! function_exists( 'theme_render_prices_table_group' ) ) {
+  /**
+   * Render a single prices table.
+   *
+   * @param string              $modifier   Table modifier: design|short.
+   * @param array<int,string>   $head_cells Header cells.
+   * @param array<int,array>    $rows       Parsed table rows.
+   * @return void
+   */
+  function theme_render_prices_table_group( string $modifier, array $head_cells, array $rows ): void {
+    if ( empty( $rows ) ) {
+      return;
+    }
+
+    $modifier = 'design' === $modifier ? 'design' : 'short';
+    ?>
+    <div class="prices-table-wrap">
+      <div class="prices-table prices-table--<?php echo esc_attr( $modifier ); ?> prices-table__head">
+        <?php foreach ( $head_cells as $head_cell ) : ?>
+          <div class="prices-table__cell"><?php echo esc_html( $head_cell ); ?></div>
+        <?php endforeach; ?>
+      </div>
+
+      <?php foreach ( $rows as $price_row ) : ?>
+        <?php if ( 'section' === $price_row['type'] ) : ?>
+          <div class="prices-table__section"><?php echo esc_html( $price_row['label'] ); ?></div>
+        <?php else : ?>
+          <div class="prices-table prices-table--<?php echo esc_attr( $modifier ); ?> prices-table__row">
+            <div class="prices-table__cell prices-table__cell--service"><?php echo esc_html( $price_row['name'] ); ?></div>
+            <?php foreach ( $price_row['values'] as $price_value ) : ?>
+              <div class="prices-table__cell prices-table__cell--price"><?php echo esc_html( $price_value ); ?></div>
+            <?php endforeach; ?>
+          </div>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </div>
+    <?php
+  }
+}
+
 $design_rows     = theme_parse_price_rows( $table['design_rows'], 3 );
 $outdoor_rows    = theme_parse_price_rows( $table['outdoor_rows'], 1 );
 $polygraphy_rows = theme_parse_price_rows( $table['polygraphy_rows'], 1 );
@@ -214,56 +254,47 @@ $price_categories = array(
       </a>
     <?php endif; ?>
 
-    <div class="prices-accordions">
+    <div class="prices-list">
       <?php foreach ( $price_categories as $price_category ) : ?>
         <?php if ( empty( $price_category['rows'] ) ) : ?>
           <?php continue; ?>
         <?php endif; ?>
 
-        <details class="prices-accordion"<?php echo ! empty( $price_category['open'] ) ? ' open' : ''; ?>>
-          <summary class="prices-accordion__summary">
-            <span class="prices-accordion__title"><?php echo esc_html( $price_category['title'] ); ?></span>
-            <span class="prices-accordion__icon" aria-hidden="true"></span>
+        <details class="prices-group<?php echo 'design' === $price_category['modifier'] ? ' prices-group--wide' : ''; ?>"<?php echo ! empty( $price_category['open'] ) ? ' open' : ''; ?>>
+          <summary>
+            <h2 class="prices-group__title"><?php echo esc_html( $price_category['title'] ); ?></h2>
           </summary>
 
-          <div class="prices-accordion__panel">
-            <?php
-            get_template_part(
-              'blocks/prices/partials/table',
-              'group',
-              array(
-                'modifier'   => $price_category['modifier'],
-                'head_cells' => $price_category['head_cells'],
-                'rows'       => $price_category['rows'],
-              )
-            );
-            ?>
-          </div>
+          <?php
+          theme_render_prices_table_group(
+            $price_category['modifier'],
+            $price_category['head_cells'],
+            $price_category['rows']
+          );
+          ?>
         </details>
       <?php endforeach; ?>
     </div>
 
-    <div class="prices-meta">
-      <?php if ( ! empty( $terms_items ) || ! empty( $table['terms_note'] ) ) : ?>
-        <article class="prices-terms">
-          <h2 class="prices-terms__title"><?php echo esc_html( $table['terms_title'] ); ?></h2>
-          <?php if ( ! empty( $terms_items ) ) : ?>
-            <ul class="prices-terms__list">
-              <?php foreach ( $terms_items as $terms_item ) : ?>
-                <li><?php echo esc_html( $terms_item ); ?></li>
-              <?php endforeach; ?>
-            </ul>
-          <?php endif; ?>
-          <?php if ( ! empty( $table['terms_note'] ) ) : ?>
-            <p class="prices-terms__note"><?php echo esc_html( $table['terms_note'] ); ?></p>
-          <?php endif; ?>
-        </article>
-      <?php endif; ?>
+    <?php if ( ! empty( $terms_items ) || ! empty( $table['terms_note'] ) ) : ?>
+      <article class="prices-terms">
+        <h2 class="prices-terms__title"><?php echo esc_html( $table['terms_title'] ); ?></h2>
+        <?php if ( ! empty( $terms_items ) ) : ?>
+          <ul class="prices-terms__list">
+            <?php foreach ( $terms_items as $terms_item ) : ?>
+              <li><?php echo esc_html( $terms_item ); ?></li>
+            <?php endforeach; ?>
+          </ul>
+        <?php endif; ?>
+        <?php if ( ! empty( $table['terms_note'] ) ) : ?>
+          <p class="prices-terms__note"><?php echo esc_html( $table['terms_note'] ); ?></p>
+        <?php endif; ?>
+      </article>
+    <?php endif; ?>
 
-      <?php if ( ! empty( $table['price_notice'] ) ) : ?>
-        <p class="prices-disclaimer"><?php echo esc_html( $table['price_notice'] ); ?></p>
-      <?php endif; ?>
-    </div>
+    <?php if ( ! empty( $table['price_notice'] ) ) : ?>
+      <p class="prices-disclaimer"><?php echo esc_html( $table['price_notice'] ); ?></p>
+    <?php endif; ?>
 
   </div>
 </section>

@@ -42,91 +42,23 @@
   font-size: 13px;
 }
 
-.prices-accordions {
+.prices-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 960px;
-  margin: 0 auto;
+  gap: 24px;
   padding: 28px 0 0;
 }
 
-.prices-accordion {
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  border-radius: 20px;
-  background: #ffffff;
-}
-
-.prices-accordion__summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 20px 22px;
+.prices-group > summary {
   list-style: none;
   cursor: pointer;
 }
 
-.prices-accordion__summary::-webkit-details-marker {
+.prices-group > summary::-webkit-details-marker {
   display: none;
 }
 
-.prices-accordion__title {
-  font-family: var(--font-heading);
-  font-size: clamp(22px, 2.2vw, 30px);
-  font-weight: 800;
-  line-height: 1.05;
-  color: var(--color-text);
-}
-
-.prices-accordion__icon {
-  position: relative;
-  flex: 0 0 18px;
-  width: 18px;
-  height: 18px;
-}
-
-.prices-accordion__icon::before,
-.prices-accordion__icon::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 18px;
-  height: 2px;
-  border-radius: 999px;
-  background: var(--color-text);
-  transform: translate(-50%, -50%);
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.prices-accordion__icon::after {
-  transform: translate(-50%, -50%) rotate(90deg);
-}
-
-.prices-accordion[open] .prices-accordion__icon::after {
-  transform: translate(-50%, -50%) rotate(90deg) scaleX(0);
-  opacity: 0;
-}
-
-.prices-accordion__panel {
-  padding: 0 16px 16px;
-}
-
-.prices-accordion__panel .prices-table-wrap {
-  border: 0;
-  border-radius: 14px;
-}
-
-.prices-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  max-width: 960px;
-  margin: 28px auto 0;
-}
-
+.prices-group__title,
 .prices-terms__title {
   margin: 0 0 14px;
   font-family: var(--font-heading);
@@ -220,6 +152,7 @@
 }
 
 .prices-terms {
+  margin-top: 24px;
   padding: 22px;
 }
 
@@ -240,7 +173,7 @@
 }
 
 .prices-disclaimer {
-  margin: 0;
+  margin: 24px 0 0;
   padding: 18px 20px;
   background: var(--color-card-alt);
   color: var(--color-text);
@@ -334,11 +267,11 @@
     width: 100%;
   }
 
-  .prices-accordion__summary {
-    padding: 18px;
+  .prices-list {
+    gap: 24px;
   }
 
-  .prices-accordion__title,
+  .prices-group__title,
   .prices-terms__title {
     font-size: 28px;
   }
