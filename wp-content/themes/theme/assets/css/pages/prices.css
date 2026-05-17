@@ -50,15 +50,66 @@
 }
 
 .prices-group > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px;
+  margin: 0 -14px;
   list-style: none;
+  border-radius: 14px;
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  user-select: none;
 }
 
 .prices-group > summary::-webkit-details-marker {
   display: none;
 }
 
-.prices-group__title,
+.prices-group > summary::after {
+  content: "";
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+  margin-top: -3px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.72;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.prices-group[open] > summary::after {
+  margin-top: 3px;
+  transform: rotate(-135deg);
+  opacity: 1;
+}
+
+.prices-group > summary:hover,
+.prices-group > summary:focus-visible {
+  background: var(--color-card-alt);
+  color: var(--color-accent);
+  outline: none;
+}
+
+.prices-group[open] > summary {
+  margin-bottom: 14px;
+}
+
+.prices-group__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+  color: inherit;
+}
+
 .prices-terms__title {
   margin: 0 0 14px;
   font-family: var(--font-heading);
