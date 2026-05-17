@@ -135,6 +135,8 @@ $steps = theme_parse_multiline_choices( $process['list'] );
     </div>
   </section>
 
+  <?php get_template_part( 'blocks/service-detail/resources' ); ?>
+
   <?php get_template_part( 'blocks/service-outdoor/request' ); ?>
 </main>
 

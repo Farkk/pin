@@ -1374,3 +1374,58 @@ if ( ! function_exists( 'theme_parse_url_lines' ) ) {
     return array_values( $lines );
   }
 }
+
+if ( ! function_exists( 'theme_seed_service_resources_demo' ) ) {
+  /**
+   * Seed demo map points for the elevator advertising service.
+   *
+   * @return void
+   */
+  function theme_seed_service_resources_demo(): void {
+    $version = '20260518_service_resources_demo';
+
+    if ( get_option( 'theme_service_resources_seed_version' ) === $version ) {
+      return;
+    }
+
+    $post = get_page_by_path( 'reklama-v-liftah', OBJECT, 'theme_service' );
+
+    if ( ! $post instanceof WP_Post ) {
+      return;
+    }
+
+    theme_update_group_field(
+      (int) $post->ID,
+      'service_resources',
+      array(
+        'enabled'       => 1,
+        'section_title' => 'Материалы и карта размещения',
+        'ap_title'      => 'Актуальная адресная программа',
+        'ap_text'       => 'Ознакомьтесь с актуальной адресной программой расположения рекламных модулей.',
+        'kp_title'      => 'Стоимость размещения рекламы в лифтах',
+        'kp_text'       => 'Скачайте актуальное коммерческое предложение по размещению.',
+        'map_enabled'   => 1,
+        'map_title'     => 'Интерактивная карта размещения рекламных стендов в лифтах',
+        'map_text'      => 'Выберите район, чтобы посмотреть расположение рекламных модулей.',
+        'map_points'    => array(
+          array(
+            'title'    => 'ЖК Северный — подъезд 1',
+            'lat'      => 55.4537,
+            'lng'      => 37.7432,
+            'district' => 'sever',
+          ),
+          array(
+            'title'    => 'ЖК Центральный — подъезд 2',
+            'lat'      => 55.4368,
+            'lng'      => 37.7665,
+            'district' => 'centr',
+          ),
+        ),
+      )
+    );
+
+    update_option( 'theme_service_resources_seed_version', $version );
+  }
+
+  add_action( 'init', 'theme_seed_service_resources_demo', 53 );
+}

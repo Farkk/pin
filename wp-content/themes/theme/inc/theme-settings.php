@@ -228,6 +228,7 @@ if ( ! function_exists( 'theme_render_settings_page' ) ) {
       update_option( 'theme_contact_telegram_url', esc_url_raw( wp_unslash( $_POST['theme_contact_telegram_url'] ?? '' ) ) );
       update_option( 'theme_contact_max_url', esc_url_raw( wp_unslash( $_POST['theme_contact_max_url'] ?? '' ) ) );
       update_option( 'theme_contact_request_email', sanitize_email( wp_unslash( $_POST['theme_contact_request_email'] ?? '' ) ) );
+      update_option( 'theme_yandex_maps_api_key', sanitize_text_field( wp_unslash( $_POST['theme_yandex_maps_api_key'] ?? '' ) ) );
 
       echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Настройки сохранены.', 'theme' ) . '</p></div>';
     }
@@ -242,6 +243,7 @@ if ( ! function_exists( 'theme_render_settings_page' ) ) {
       'max_url'      => theme_get_max_url(),
       'request_email' => theme_get_request_email(),
     );
+    $yandex_maps_api_key = theme_get_yandex_maps_api_key();
     ?>
     <div class="wrap">
       <h1><?php esc_html_e( 'Настройки темы', 'theme' ); ?></h1>
@@ -323,6 +325,15 @@ if ( ! function_exists( 'theme_render_settings_page' ) ) {
             <td>
               <input id="theme-contact-request-email" class="regular-text code" type="email" name="theme_contact_request_email" value="<?php echo esc_attr( $contact_data['request_email'] ); ?>" placeholder="mail@example.ru">
               <p class="description"><?php esc_html_e( 'На этот адрес будут приходить заявки со всех форм сайта.', 'theme' ); ?></p>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label for="theme-yandex-maps-api-key"><?php esc_html_e( 'Яндекс.Карты API', 'theme' ); ?></label>
+            </th>
+            <td>
+              <input id="theme-yandex-maps-api-key" class="regular-text code" type="text" name="theme_yandex_maps_api_key" value="<?php echo esc_attr( $yandex_maps_api_key ); ?>" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" autocomplete="off">
+              <p class="description"><?php esc_html_e( 'Ключ JavaScript API для интерактивной карты на страницах услуг. Получить можно в кабинете разработчика Яндекса.', 'theme' ); ?></p>
             </td>
           </tr>
         </table>

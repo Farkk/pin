@@ -10,6 +10,7 @@ $theme_acf_files = glob( get_theme_file_path( 'inc/acf/*.php' ) );
 require_once get_theme_file_path( 'inc/post-types.php' );
 require_once get_theme_file_path( 'inc/default-content.php' );
 require_once get_theme_file_path( 'inc/theme-settings.php' );
+require_once get_theme_file_path( 'inc/service-resources.php' );
 require_once get_theme_file_path( 'inc/request-modal.php' );
 require_once get_theme_file_path( 'inc/social-float.php' );
 
